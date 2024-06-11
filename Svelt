@@ -1,0 +1,53 @@
+<script>
+    let educationExpanded = false;
+
+    function toggleEducation() {
+        educationExpanded = !educationExpanded;
+    }
+</script>
+
+<div class="container mx-auto flex max-w-4xl p-5">
+    <aside class="w-1/4 bg-blue-700 p-5 text-white">
+        <h2 class="text-2xl">Pli Poçak</h2>
+        <img src="A.jpg" alt="Photo de Ali Koçak" class="w-48 h-auto my-4">
+        <p class="text-sm mb-4">"As a student with a passion for corporate finance, I have solid experience in financial auditing at KPMG and as a junior consultant at Valeo"</p>
+        <ul class="list-none p-0">
+            <li class="mb-2"><a href="mailto:ali.kocak@essec.edu" class="text-white text-sm">ali.kocak@essec.edu</a></li>
+            <li><a href="https://www.linkedin.com/in/ali-ko%C3%A7ak-2b07b618a/" class="text-white text-sm">https://www.linkedin.com/in/ali-ko%C3%A7ak-2b07b618a/</a></li>
+        </ul>
+    </aside>
+
+    <main class="w-3/4 p-5">
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4">Education</h2>
+            <div class="mb-4">
+                <h3 class="font-bold" on:click={toggleEducation} class:animate-blink={educationExpanded}>ESSEC Business School</h3>
+                {#if educationExpanded}
+                <span class="text-sm">Cergy</span>
+                <p class="text-sm italic">Master in Management</p>
+                <ul class="list-disc ml-5 mt-2">
+                    <li>Relevant Coursework: Corporate Finance, Accounting</li>
+                </ul>
+                {/if}
+            </div>
+            <!-- Ajoutez les autres formations ici avec la même structure -->
+        </section>
+
+        <!-- Les autres sections restantes restent inchangées -->
+    </main>
+</div>
+
+<style>
+    .animate-blink {
+        animation: blink-animation 1s infinite;
+    }
+
+    @keyframes blink-animation {
+        0%, 50% {
+            color: inherit;
+        }
+        100% {
+            color: red;
+        }
+    }
+</style>
