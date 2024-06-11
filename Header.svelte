@@ -22,9 +22,8 @@
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <style>
           @keyframes blink {
-            0% { color: red; }
+            0%, 100% { color: red; }
             50% { color: transparent; }
-            100% { color: red; }
           }
 
           .blink {
