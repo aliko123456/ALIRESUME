@@ -1,13 +1,18 @@
 <script>
   let isVisible = true;
+  let isBlinking = false;
 
   function toggleVisibility() {
     isVisible = !isVisible;
   }
+
+  function toggleBlinking() {
+    isBlinking = !isBlinking;
+  }
 </script>
 
 {#if isVisible}
-  <div on:dblclick={toggleVisibility}>
+  <div on:dblclick={() => { toggleVisibility(); toggleBlinking(); }}>
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -15,11 +20,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CV Ali Koçak</title>
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+          @keyframes blink {
+            0% { color: red; }
+            50% { color: transparent; }
+            100% { color: red; }
+          }
+
+          .blink {
+            animation: blink 1s step-end infinite;
+          }
+        </style>
     </head>
     <body class="bg-gray-100">
         <div class="container mx-auto flex max-w-4xl p-5">
             <aside class="w-1/4 bg-blue-700 p-5 text-white">
-                <h2 class="text-2xl">Pli Poçak</h2>
+                <h2 class="text-2xl {isBlinking ? 'blink' : ''}">Pli Poçak</h2>
                 <img src="A.jpg" alt="Photo de Ali Koçak" class="w-48 h-auto my-4">
                 <p class="text-sm mb-4">"As a student with a passion for corporate finance, I have solid experience in financial auditing at KPMG and as a junior consultant at Valeo"</p>
                 <ul class="list-none p-0">
@@ -30,9 +46,9 @@
 
             <main class="w-3/4 p-5">
                 <section class="mb-10">
-                    <h2 class="text-xl font-bold mb-4">Experience</h2>
+                    <h2 class="text-xl font-bold mb-4 {isBlinking ? 'blink' : ''}">Experience</h2>
                     <div class="mb-4">
-                        <h3 class="font-bold">KPMG</h3>
+                        <h3 class="font-bold {isBlinking ? 'blink' : ''}">KPMG</h3>
                         <span class="text-sm">La Défense</span>
                         <div class="text-sm italic mt-1">Financial audit <span class="block">Sept 2023 - March 2024</span></div>
                         <ul class="list-disc ml-5 mt-2">
@@ -44,7 +60,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <h3 class="font-bold">Valeo</h3>
+                        <h3 class="font-bold {isBlinking ? 'blink' : ''}">Valeo</h3>
                         <span class="text-sm">Cergy</span>
                         <div class="text-sm italic mt-1">Junior Consultant <span class="block">Dec 2022 - July 2023</span></div>
                         <ul class="list-disc ml-5 mt-2">
@@ -56,7 +72,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <h3 class="font-bold">ESSEC Africa Society</h3>
+                        <h3 class="font-bold {isBlinking ? 'blink' : ''}">ESSEC Africa Society</h3>
                         <span class="text-sm">Cergy</span>
                         <div class="text-sm italic mt-1">Head of Partnerships <span class="block">Dec 2022 - July 2023</span></div>
                         <ul class="list-disc ml-5 mt-2">
@@ -68,9 +84,9 @@
                 </section>
 
                 <section class="mb-10">
-                    <h2 class="text-xl font-bold mb-4">Education</h2>
+                    <h2 class="text-xl font-bold mb-4 {isBlinking ? 'blink' : ''}">Education</h2>
                     <div class="mb-4">
-                        <h3 class="font-bold">ESSEC Business School</h3>
+                        <h3 class="font-bold {isBlinking ? 'blink' : ''}">ESSEC Business School</h3>
                         <span class="text-sm">Cergy</span>
                         <p class="text-sm italic">Master in Management</p>
                         <ul class="list-disc ml-5 mt-2">
@@ -78,7 +94,7 @@
                         </ul>
                     </div>
                     <div class="mb-4">
-                        <h3 class="font-bold">Intégrale Prépa</h3>
+                        <h3 class="font-bold {isBlinking ? 'blink' : ''}">Intégrale Prépa</h3>
                         <span class="text-sm">Paris</span>
                         <p class="text-sm italic">Economic and Commercial Preparatory Class, scientific option</p>
                         <ul class="list-disc ml-5 mt-2">
@@ -86,17 +102,17 @@
                         </ul>
                     </div>
                     <div class="mb-4">
-                        <h3 class="font-bold">Lycée Charles Peguy</h3>
+                        <h3 class="font-bold {isBlinking ? 'blink' : ''}">Lycée Charles Peguy</h3>
                         <span class="text-sm">Orléans</span>
                         <p class="text-sm italic">French Scientific Baccalaureate, graduated with highest honors</p>
                     </div>
                 </section>
 
                 <section>
-                    <h2 class="text-xl font-bold mb-4">Skills</h2>
-                    <h3 class="font-bold">Language</h3>
+                    <h2 class="text-xl font-bold mb-4 {isBlinking ? 'blink' : ''}">Skills</h2>
+                    <h3 class="font-bold {isBlinking ? 'blink' : ''}">Language</h3>
                     <div class="text-sm">Native in French and Turkish; full professional proficiency in English and German</div>
-                    <h3 class="font-bold mt-4">Interests:</h3>
+                    <h3 class="font-bold mt-4 {isBlinking ? 'blink' : ''}">Interests:</h3>
                     <div class="text-sm">Composing music, writing film scripts, playing basketball and gardening</div>
                 </section>
             </main>
